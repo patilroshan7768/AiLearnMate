@@ -1,0 +1,219 @@
+# =========================
+
+# AI LearnMate .gitignore
+
+# =========================
+
+# -------------------------
+
+# Dependencies
+
+# -------------------------
+
+node_modules/
+**/node_modules/
+
+# -------------------------
+
+# Environment Variables
+
+# -------------------------
+
+.env
+.env.*
+!.env.example
+
+# -------------------------
+
+# Expo / React Native
+
+# -------------------------
+
+.expo/
+.expo-shared/
+web-build/
+dist/
+
+# Expo local settings
+
+Frontend/.expo/
+Frontend/.expo-shared/
+
+# -------------------------
+
+# Android
+
+# -------------------------
+
+android/.gradle/
+android/app/build/
+android/build/
+*.keystore
+*.jks
+
+# -------------------------
+
+# iOS
+
+# -------------------------
+
+ios/build/
+ios/Pods/
+*.xcworkspace
+
+# -------------------------
+
+# Logs
+
+# -------------------------
+
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -------------------------
+
+# Cache
+
+# -------------------------
+
+.cache/
+.parcel-cache/
+.eslintcache
+
+# -------------------------
+
+# Database Files
+
+# -------------------------
+
+*.sqlite
+*.sqlite3
+*.db
+
+# -------------------------
+
+# Uploads / Generated Files
+
+# -------------------------
+
+backend/uploads/
+backend/temp/
+backend/generated/
+uploads/
+
+# -------------------------
+
+# Media Files
+
+# -------------------------
+
+*.mp3
+*.mp4
+*.wav
+*.avi
+*.mov
+*.mkv
+
+# -------------------------
+
+# AI Generated Content
+
+# -------------------------
+
+transcripts/
+summaries/
+flashcards/
+notes/
+quizzes/
+
+# -------------------------
+
+# Python
+
+# -------------------------
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env/
+
+# -------------------------
+
+# IDE
+
+# -------------------------
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+
+# OS Files
+
+# -------------------------
+
+.DS_Store
+Thumbs.db
+
+# -------------------------
+
+# Build Outputs
+
+# -------------------------
+
+build/
+dist/
+coverage/
+
+# -------------------------
+
+# Sequelize
+
+# -------------------------
+
+sequelize-meta.json
+
+# -------------------------
+
+# Testing
+
+# -------------------------
+
+coverage/
+.nyc_output/
+
+# -------------------------
+
+# Temporary Files
+
+# -------------------------
+
+tmp/
+temp/
+*.tmp
+
+# -------------------------
+
+# Secrets
+
+# -------------------------
+
+service-account.json
+firebase-adminsdk.json
+google-credentials.json
+openai-key.json
+gemini-key.json
+credentials.json
+
+
+*-player-script.js
+*.log
+err.txt
+out.txt
