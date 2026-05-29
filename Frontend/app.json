@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -20,7 +20,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.stormr.ailearnmate"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +30,9 @@
       "eas": {
         "projectId": "7369fcd5-4982-4e51-b466-c75e6929e3a6"
       }
-    }
+    },
+    "plugins": [
+      "expo-asset"
+    ]
   }
 }
