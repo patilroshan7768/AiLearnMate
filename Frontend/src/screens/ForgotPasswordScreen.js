@@ -83,6 +83,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
                                         invalidEmail ? { borderColor: 'red', borderWidth: 2 } : null
                                     ]}
                                     placeholder="Enter your email"
+                                    placeholderTextColor="#666"
                                     value={email}
                                     onChangeText={(text) => { setEmail(text); setInvalidEmail(false); }}
                                     keyboardType="email-address"
@@ -111,6 +112,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
                                     style={styles.input}
                                     placeholder="4-Digit OTP"
                                     value={otp}
+                                    placeholderTextColor="#666"
                                     onChangeText={setOtp}
                                     keyboardType="numeric"
                                     maxLength={4}
@@ -118,6 +120,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
                                 <TextInput
                                     style={styles.input}
                                     placeholder="New Password"
+                                    placeholderTextColor="#666"
                                     value={newPassword}
                                     onChangeText={setNewPassword}
                                     secureTextEntry
@@ -197,6 +200,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         backgroundColor: '#fff',
         fontSize: 16,
+        color: '#000',
     },
     actionContainer: {
         flexDirection: 'row',

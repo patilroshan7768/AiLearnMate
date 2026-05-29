@@ -286,6 +286,7 @@ const LoginScreen = ({ navigation }) => {
                                             keyboardType="numeric"
                                             maxLength={4}
                                             autoFocus={true}
+                                            placeholderTextColor="#666"
                                         />
                                         <View style={styles.otpContainer}>
                                             {[0, 1, 2, 3].map((index) => (
@@ -319,8 +320,8 @@ const LoginScreen = ({ navigation }) => {
                                     {/* ... Rest of form elements ... */}
                                     {/* HACK: Hidden inputs to trap browser autofill so the real fields stay blank */}
                                     <View style={{ position: 'absolute', opacity: 0, height: 0, width: 0 }}>
-                                        <TextInput autoComplete="username" style={{ height: 0, width: 0 }} />
-                                        <TextInput autoComplete="current-password" style={{ height: 0, width: 0 }} />
+                                        <TextInput placeholderTextColor="#666" autoComplete="username" style={{ height: 0, width: 0 }} />
+                                        <TextInput placeholderTextColor="#666" autoComplete="current-password" style={{ height: 0, width: 0 }} />
                                     </View>
 
                                     {errorMsg ? <Text style={styles.errorText}>{errorMsg}</Text> : null}
@@ -337,6 +338,7 @@ const LoginScreen = ({ navigation }) => {
                                                     nameError ? { borderColor: 'red', borderWidth: 2, backgroundColor: '#ffe6e6' } : null
                                                 ]}
                                                 placeholder="Full Name"
+                                                placeholderTextColor="#666"
                                                 value={name}
                                                 onChangeText={(text) => { setName(text); setNameError(false); }}
                                             />
@@ -364,6 +366,7 @@ const LoginScreen = ({ navigation }) => {
                                             emailError ? { borderColor: 'red', borderWidth: 2, backgroundColor: '#ffe6e6' } : null
                                         ]}
                                         placeholder="Email Address"
+                                        placeholderTextColor="#666"
                                         value={email}
                                         onChangeText={(text) => { setEmail(text); setEmailError(false); setErrorMsg(''); }}
                                         autoCapitalize="none"
@@ -379,6 +382,7 @@ const LoginScreen = ({ navigation }) => {
                                         <TextInput
                                             style={styles.passwordInput}
                                             placeholder="Password"
+                                            placeholderTextColor="#666"
                                             value={password}
                                             onChangeText={(text) => { setPassword(text); setPasswordError(false); setErrorMsg(''); }}
                                             secureTextEntry={!showPassword}
@@ -529,14 +533,15 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     input: {
-        borderWidth: 1,
-        borderColor: '#ddd',
-        padding: 12,
-        marginBottom: 15,
-        borderRadius: 8,
-        backgroundColor: '#fff',
-        fontSize: 16,
-    },
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 12,
+    marginBottom: 15,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    color: '#000',
+},
     label: {
         marginBottom: 5,
         color: '#666',
@@ -640,6 +645,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         height: '100%',
         borderWidth: 0,
+        color: '#000',
         borderColor: 'transparent',
         backgroundColor: 'transparent',
         padding: 0,
