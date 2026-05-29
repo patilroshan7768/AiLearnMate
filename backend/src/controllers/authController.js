@@ -2,7 +2,7 @@ const User = require('../models/User');
 const { generateToken } = require('../utils/jwt');
 const { validationResult } = require('express-validator');
 const { logAction } = require('../utils/logger');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 // Temporary storage for OTP (In production use Redis or Database)
@@ -10,28 +10,44 @@ require('dotenv').config();
 const otpStore = new Map();
 
 // Email Configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS
+//   }
+// });
+
+// Remove the nodemailer require and transporter setup from the top of the file!
 
 const sendVerificationEmail = async (userEmail, otpCode) => {
   try {
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.warn("Email credentials not set. Skipping email send.");
+    if (!process.env.BREVO_API_KEY) {
+      console.warn("BREVO_API_KEY not set. Skipping email send.");
       return;
     }
-    await transporter.sendMail({
-      from: `"AI LearnMate" <${process.env.EMAIL_USER}>`,
-      to: userEmail,
-      subject: "Your Verification Code",
-      text: `Your Code is: ${otpCode}`,
-      html: `<h3>Welcome to AI LearnMate!</h3><p>Your Verification Code is: <b>${otpCode}</b></p><p>This code expires in 1 minute.</p>`
+
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': process.env.BREVO_API_KEY, 
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        sender: { name: "AI LearnMate", email: process.env.EMAIL_USER }, 
+        to: [{ email: userEmail }],
+        subject: "Your Verification Code",
+        htmlContent: `<h3>Welcome to AI LearnMate!</h3><p>Your Verification Code is: <b>${otpCode}</b></p><p>This code expires in 1 minute.</p>`
+      })
     });
-    console.log(`Verification email sent to ${userEmail}`);
+
+    if (!response.ok) {
+        console.error("Brevo API Error:", await response.text());
+        throw new Error("Failed to send HTTP email");
+    }
+
+    console.log(`Verification email sent to ${userEmail} via Brevo HTTP`);
   } catch (error) {
     console.error("Failed to send verification email:", error);
   }
