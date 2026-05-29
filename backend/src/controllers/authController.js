@@ -27,6 +27,9 @@ const sendVerificationEmail = async (userEmail, otpCode) => {
       return;
     }
 
+    console.log("BREVO KEY EXISTS:", !!process.env.BREVO_API_KEY);
+ console.log("BREVO KEY LENGTH:", process.env.BREVO_API_KEY?.length);
+ console.log("BREVO KEY START:", process.env.BREVO_API_KEY?.substring(0, 8));
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
