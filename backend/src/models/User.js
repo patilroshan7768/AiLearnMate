@@ -59,7 +59,7 @@ const User = sequelize.define('User', {
       }
       // Set teacher accounts to inactive by default until admin approval
       if (user.role === 'teacher') {
-        user.is_active = false;
+        user.is_active = true;
       } else {
         user.is_active = true;
       }
@@ -73,7 +73,7 @@ const User = sequelize.define('User', {
 });
 
 // Instance method to compare password
-User.prototype.comparePassword = async function(candidatePassword) {
+User.prototype.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 

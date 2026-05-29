@@ -6,9 +6,13 @@ import { Platform } from 'react-native';
 // Based on your logs, your IP is 192.168.43.252
 const DEV_IP = '10.211.137.212';
 
-const BASE_URL = Platform.OS === 'web'
-    ? 'http://localhost:3000/api'
-    : `http://${DEV_IP}:3000/api`;
+// const BASE_URL = Platform.OS === 'web'
+//     ? 'http://localhost:3000/api'
+//     : `http://${DEV_IP}:3000/api`;
+
+const BASE_URL =
+  process.env.EXPO_PUBLIC_API_URL ||
+  'http://10.211.137.212:3000/api';
 
 
 
